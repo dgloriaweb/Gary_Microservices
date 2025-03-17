@@ -12,25 +12,26 @@ use Symfony\Component\HttpFoundation\Response;
 
 class WebhookController
 {
-    public function __construct(
-        private HandlerDelegator $handlerDelegator,
-    ) {
-    }
+    // public function __construct(
+    //     private HandlerDelegator $handlerDelegator,
+    // ) {
+    // }
 
     public function __invoke(Request $request): JsonResponse
     {
-        // Determine the platform from header
-        $platform = strtolower($request->header('X-Webhook-Source', 'unknown'));
 
-        // Get the payload off of the request
-        $payload = $request->all();
+        // // Determine the platform from header
+        // $platform = strtolower($request->header('X-Webhook-Source', 'unknown'));
 
-        // Instantiate the webhook DTO
-        $webhook = new Webhook($platform, $payload);
+        // // Get the payload off of the request
+        // $payload = $request->all();
 
-        $this->handlerDelegator->delegate($webhook);
+        // // Instantiate the webhook DTO
+        // $webhook = new Webhook($platform, $payload);
 
-        // ... do something with the webhook
+        // $this->handlerDelegator->delegate($webhook);
+
+        // // ... do something with the webhook
 
         return new JsonResponse(status: Response::HTTP_NO_CONTENT);
     }
